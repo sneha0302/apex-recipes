@@ -21,6 +21,7 @@ jobs:
       
       - name: Run PMD to scan the code 
         run: | 
+         cd ~/bin/pmd-bin-6.50.0/bin
          ./run.sh pmd -d /apex-recipes/force-app/main/default -R rulesets/apex/security.xml --format sarif --report-file results.sarif
       
       - name: Use the Upload Artifact GitHub Action
