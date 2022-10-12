@@ -107,4 +107,10 @@ public with sharing class BatchApexRecipes implements Database.Batchable<SObject
             ' Failures: ' +
             failures.size();
     }
+    public without sharing class Foo {
+    Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
+    Blob hardCodedKey = Blob.valueOf('0000000000000000');
+    Blob data = Blob.valueOf('Data to be encrypted');
+    
+}
 }
