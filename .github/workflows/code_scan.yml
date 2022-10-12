@@ -12,6 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
       - name: Install PMD 
         run: | 
           #cd $HOME
@@ -24,8 +29,8 @@ jobs:
         run: |
          #cd pmd-bin-6.50.0
          #cd bin
-
-         pmd-bin-6.50.0/bin/run.sh pmd --dir /AccountTrigger.trigger -R rulesets/apex/security.xml --format sarif --report-file results.sarif
+         echo  ${GITHUB_WORKSPACE}/force-app/main/default/triggers/AccountTrigger.trigger
+         pmd-bin-6.50.0/bin/run.sh pmd --dir  ${GITHUB_WORKSPACE}/force-app/main/default/triggers/AccountTrigger.trigger -R rulesets/apex/security.xml --format sarif --report-file results.sarif
       
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
