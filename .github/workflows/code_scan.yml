@@ -26,7 +26,7 @@ jobs:
          #cd bin
          ls -al
          pwd
-         pmd-bin-6.50.0/bin/run.sh pmd -d home/runner/work/apex-recipes/apex-recipes/force-app/main/default/ -R rulesets/apex/security.xml --format sarif --report-file results.sarif
+         pmd-bin-6.50.0/bin/run.sh pmd -d home/runner/work/apex-recipes/apex-recipes/force-app/main/default/triggers/ -R rulesets/apex/security.xml --format sarif --report-file results.sarif
       
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
