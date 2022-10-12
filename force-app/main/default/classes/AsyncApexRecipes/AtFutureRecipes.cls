@@ -31,6 +31,22 @@ public with sharing class AtFutureRecipes {
         System.debug(LoggingLevel.INFO, '\n\nOur Data is: \n' + data);
         AtFutureRecipes.testCircuitBreaker = true;
     }
+    public class Foo {
+    public void foo(String username, String password) {
+        Blob headerValue = Blob.valueOf(username + ':' + password);
+        String authorizationHeader = 'BASIC ' + (headerValue);
+        req.setHeader('Authorization', authorizationHeader);
+    }
+}
+    public without sharing class FooDML {
+    // DML operation here
+}
+    public without sharing class Foo {
+    String unsafeLocation = ApexPage.getCurrentPage().getParameters.get('url_param');
+    PageReference page() {
+       return new PageReference(unsafeLocation);
+    }
+}
 
     /**
      * @description Method demonstrates how an @future anotated method can make
