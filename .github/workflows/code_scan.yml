@@ -1,0 +1,31 @@
+name: PMD Code Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  snyk-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install PMD 
+        run: | 
+          cd $HOME
+          wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.50.0/pmd-bin-6.50.0.zip
+          unzip pmd-bin-6.50.0.zip
+          alias pmd="$HOME/pmd-bin-6.50.0/bin/run.sh pmd"
+      
+      - name: Run PMD to scan the code 
+        run: | 
+         pmd -d /apex-recipes/force-app/main/default -R rulesets/apex/security.xml --format sarif --report-file results.sarif
+      
+      - name: Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with:
+          name: scan_output
+          path: results.sarif
+          #https://pmd.github.io/latest/pmd_rules_apex.html
