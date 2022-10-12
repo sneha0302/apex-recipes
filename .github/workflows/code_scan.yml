@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  snyk-scan:
+  pmd-scan:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +21,7 @@ jobs:
       
       - name: Run PMD to scan the code 
         run: | 
-         pmd -d /apex-recipes/force-app/main/default -R rulesets/apex/security.xml --format sarif --report-file results.sarif
+         ./run.sh pmd -d /apex-recipes/force-app/main/default -R rulesets/apex/security.xml --format sarif --report-file results.sarif
       
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
