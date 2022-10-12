@@ -30,7 +30,7 @@ jobs:
          #cd pmd-bin-6.50.0
          #cd bin
          echo  ${GITHUB_WORKSPACE}/force-app/main/default/triggers/AccountTrigger.trigger
-         pmd-bin-6.50.0/bin/run.sh pmd --dir  ${GITHUB_WORKSPACE}/force-app/main/default/default/classes/Async Apex Recipes/ -R rulesets/apex/security.xml --format sarif --report-file results.sarif
+         pmd-bin-6.50.0/bin/run.sh pmd --dir  ${GITHUB_WORKSPACE}/force-app/main/default/default/classes/AsyncApexRecipes/ -R rulesets/apex/security.xml --format sarif --report-file results.sarif
       
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
