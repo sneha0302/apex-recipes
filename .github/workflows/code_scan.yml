@@ -29,7 +29,7 @@ jobs:
         run: |
          #cd pmd-bin-6.50.0
          #cd bin
-         pmd-bin-6.50.0/bin/run.sh pmd --dir  ${GITHUB_WORKSPACE}/force-app/main/default/classes/AsyncApexRecipes/ -R category/apex/security.xml,category/apex/errorprone.xml/ApexCSRF --format sarif --report-file results.sarif
+         pmd-bin-6.50.0/bin/run.sh pmd --dir  ${GITHUB_WORKSPACE}/force-app/main/default/triggers/  -R category/apex/security.xml,category/apex/errorprone.xml/ApexCSRF -l apex,xml --format sarif --report-file results.sarif
       
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
